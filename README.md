@@ -5,3 +5,5 @@ A lib utilizada para gerar o QrCode foi "QrCoder" by Raffael Herrmann.
 Projeto Simples focado somente na impementação do QrCode.
 
 Projeto livre para Download e alterações.
+
+![](https://github.com/AlonsoLucasls/QrCodeGenerator/blob/master/featuresRecQrCode.gif)
