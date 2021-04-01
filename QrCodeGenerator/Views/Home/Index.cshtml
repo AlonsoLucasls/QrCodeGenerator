@@ -1,12 +1,7 @@
 ﻿@model QrCodeGenerator.Models.QrCodeViewModel
 @{
     ViewData["Title"] = "Gerar QrCode";
-
-
 }
-
-
-
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
@@ -15,46 +10,31 @@
                     <p>
                         Nome: <input class="form-control" type="text" asp-for="Nome" />
                         Link: <input class="form-control" type="text" asp-for="Link" />
-                        Frase: <input class="form-control" type="text" asp-for="Frase" />                   
-                               <button type="submit" class="btn btn-primary">Gerar</button>
+                        Frase: <input class="form-control" type="text" asp-for="Frase" />
+                        <button type="submit" class="btn btn-primary">Gerar</button>
                     </p>
                 </form>
             </div>
         </div>
-
-     
-            <div class="card">
-                <div class="header">
-                    <div class="card col-md-5 div-qrCode">
-                        <div class="card-header card-header-footer-qrCode">
-                            @*<img src="~/assets/images/logo_branca.png" />*@                           
-                            @ViewBag.Nome
-                        </div>
-                        <div class="card-body card-body-qrcode">
-                            <img class="img" src="@ViewBag.ImgQrCode" />                          
-                        </div>
-                        <div class="card-footer card-header-footer-qrCode">
-                            <p>@ViewBag.Frase</p>
-                            <p>@ViewBag.Link</p>
-                            <div>
-                            </div>
-
-                        </div>
+    </div>
+    <div class="card">
+        <div class="header">
+            <div class="card col-md-5 div-qrCode">
+                <div class="card-header card-header-footer-qrCode">                
+                    @ViewBag.Nome
+                </div>
+                <div class="card-body card-body-qrcode">
+                    <img class="img" src="@ViewBag.ImgQrCode" />
+                </div>
+                <div class="card-footer card-header-footer-qrCode">
+                    <p>@ViewBag.Frase</p>
+                    <p>@ViewBag.Link</p>
+                    <div>
+                    </div>
+                </div>
             </div>
-       
+        </div>
     </div>
 </section>
-
-
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js//site.js"></script>
-<script>
-
-
-    $(document).ready(() => {
-
-
-    });
-
-
-</script>

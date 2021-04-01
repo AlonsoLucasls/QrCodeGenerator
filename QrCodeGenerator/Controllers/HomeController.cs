@@ -17,15 +17,16 @@ namespace QrCodeGenerator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly QRCodeGenerator _qRCodeGenerator;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, QRCodeGenerator qRCodeGenerator)
         {
             _logger = logger;
+            _qRCodeGenerator = qRCodeGenerator;
         }
 
         public IActionResult Index(string nome,string link,string frase)
         {
-
             var data = new
             {
                 nomeQr = nome != null ? nome : "Nome",
@@ -33,9 +34,7 @@ namespace QrCodeGenerator.Controllers
                 fraseQr = frase != null ? link : "Teste"
             };
 
-            QRCodeGenerator qrGenerator = new QRCodeGenerator();
-
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(JsonConvert.SerializeObject(data), QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = _qRCodeGenerator.CreateQrCode(JsonConvert.SerializeObject(data), QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(5);
 
@@ -53,7 +52,7 @@ namespace QrCodeGenerator.Controllers
 
             ViewBag.Nome = nome != null ? nome : "Nome";
             ViewBag.Link = link != null ? link : "www.qualuqerlink.com.br";
-            ViewBag.Frase = frase != null ? link : "Teste";
+            ViewBag.Frase = frase != null ? frase : "Teste";
             ViewBag.ImgQrCode = imgSrc;         
 
             return View();
