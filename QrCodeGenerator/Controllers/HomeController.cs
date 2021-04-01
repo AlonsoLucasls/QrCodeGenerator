@@ -50,9 +50,9 @@ namespace QrCodeGenerator.Controllers
             var base64 = Convert.ToBase64String(result.QrCodeData);
             var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 
-            ViewBag.Nome = nome != null ? nome : "Nome";
-            ViewBag.Link = link != null ? link : "www.qualuqerlink.com.br";
-            ViewBag.Frase = frase != null ? frase : "Teste";
+            ViewBag.Nome = nome is not null ? nome : "Nome";
+            ViewBag.Link = link is not null ? link : "www.qualuqerlink.com.br";
+            ViewBag.Frase = frase is not null ? frase : "Teste";
             ViewBag.ImgQrCode = imgSrc;         
 
             return View();
